@@ -1,4 +1,3 @@
-# eduid/attributes
 FROM httpd:2.4
 
 # install required packages
