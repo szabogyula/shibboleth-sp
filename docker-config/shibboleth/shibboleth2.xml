@@ -60,23 +60,19 @@ https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPConfiguration
         <!-- Loads and trusts a metadata file that describes only the Testshib IdP and how to communicate with it. -->
 
         <MetadataProvider type="Chaining">
-          <MetadataProvider type="XML" uri="http://metadata.eduid.hu/current/href.xml"
-               backingFilePath="href.xml" reloadInterval="180000">
-              <MetadataFilter type="Signature" certificate="href-metadata-signer-2011.crt"/>
-          </MetadataProvider>
-          <MetadataProvider type="XML" uri="http://metadata.eduid.hu/current/sztaki.xml"
-               backingFilePath="sztaki.xml" reloadInterval="180000">
-              <MetadataFilter type="Signature" certificate="href-metadata-signer-2011.crt"/>
-          </MetadataProvider>
+            <MetadataProvider type="XML" uri="http://metadata.eduid.hu/current/href.xml"
+                              backingFilePath="href.xml" reloadInterval="180000">
+                <MetadataFilter type="Signature" certificate="href-metadata-signer-2011.crt"/>
+            </MetadataProvider>
+            <MetadataProvider type="XML" uri="http://metadata.eduid.hu/current/kfki.xml"
+                              backingFilePath="kfki.xml" reloadInterval="180000">
+                <MetadataFilter type="Signature" certificate="href-metadata-signer-2011.crt"/>
+            </MetadataProvider>
+            <MetadataProvider type="XML" uri="http://metadata.eduid.hu/current/sztaki.xml"
+                              backingFilePath="sztaki.xml" reloadInterval="180000">
+                <MetadataFilter type="Signature" certificate="href-metadata-signer-2011.crt"/>
+            </MetadataProvider>
         </MetadataProvider>
-
-        <!--
-        <MetadataProvider type="Dynamic" ignoreTransport="true">
-            <Subst>http://mdx.eduid.hu/entities/$entityID</Subst>
-            <!-- MetadataFilter type="Signature" certificate="mdx-test-signer-2015.crt"/ -->
-        </MetadataProvider>
-        -->
-
 
         <!-- Attribute and trust options you shouldn't need to change. -->
         <AttributeExtractor type="XML" validate="true" path="attribute-map.xml"/>
@@ -90,7 +86,7 @@ https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPConfiguration
         <AttributeFilter type="XML" validate="true" path="attribute-policy.xml"/>
 
         <!-- Your SP generated these credentials.  They're used to talk to IdP's. -->
-        <CredentialResolver type="File" key="sp-cert.key" certificate="sp-cert.pem"/>
+        <CredentialResolver type="File" key="sp-key.pem" certificate="sp-cert.pem"/>
 
     </ApplicationDefaults>
 
